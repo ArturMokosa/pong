@@ -24,3 +24,4 @@ c:\users\szef\documents\visual studio 2013\Projects\pong\pong\obj\x86\Debug\pong
 c:\users\szef\documents\visual studio 2013\Projects\pong\pong\obj\x86\Debug\pong.exe
 c:\users\szef\documents\visual studio 2013\Projects\pong\pong\obj\x86\Debug\pong.pdb
 C:\Users\szef\Documents\Visual Studio 2013\Projects\pong\pong\obj\x86\Debug\pong.csproj.CoreCompileInputs.cache
+C:\Users\szef\Documents\Visual Studio 2013\Projects\pong\pong\bin\Windows\x86\Debug\Content\font.xnb

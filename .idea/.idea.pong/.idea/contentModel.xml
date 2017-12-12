@@ -6,12 +6,15 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="pong" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="ClassDiagram1.cd" t="Include" />
+        <e p="ClassDiagram2.cd" t="Include" />
         <e p="Classes" t="Include">
           <e p="ClassBall.cs" t="Include" />
           <e p="ClassRacket.cs" t="Include" />
         </e>
         <e p="Content" t="Include">
           <e p="Content.mgcb" t="Include" />
+          <e p="font.spritefont" t="Include" />
         </e>
         <e p="Game1.cs" t="Include" />
         <e p="Icon.ico" t="Include" />

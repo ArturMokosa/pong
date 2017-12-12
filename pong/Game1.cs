@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using pong.Classes;
+using Microsoft.Xna.Framework.Content;
 
 namespace pong
 {
@@ -12,6 +13,7 @@ namespace pong
         ClassBall ball;
         ClassRacket P1;
         ClassRacket P2;
+        SpriteFont font;
 
         int scoreP1 = 0;
         int scoreP2 = 0;
@@ -32,6 +34,8 @@ namespace pong
 
         protected override void LoadContent()
         {
+            font = Content.Load<SpriteFont>("font");
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
             ball = new ClassBall(GraphicsDevice, spriteBatch, this, ballSize);
 
@@ -60,21 +64,44 @@ namespace pong
             {
                 ball.gameRun = true;
             }
+            else if (Keyboard.GetState().IsKeyDown(Keys.R) && ball.gameRun)
+            {
+                ball.gameRun = false;
+                ball.ResetBall();
+            }
 
             P1.posY = Mouse.GetState().Y;
             P2.posY = Mouse.GetState().Y;
 
             if (ball.dirX > 0)
             {
-                ///ball.CheckRacketCollision(P2);
-                if (ball.posY >= P2.posY && ball.posY + ballSize < P2.posY + racketHeight && ball.posX >= P2.posX) //8:52
+                // ball.CheckRacketCollision(P2);
+                if (ball.posY >= P2.posY && ball.posY + ballSize < P2.posY + racketHeight &&
+                    ball.posX + ballSize >= P2.posX)
                 {
-                    
+                    ball.dirX = -ball.dirX;
+                }
+                else if (ball.posX >= GraphicsDevice.Viewport.Width - ballSize)
+                {
+                    scoreP1++;
+                    ball.gameRun = false;
+                    ball.ResetBall();
                 }
             }
             else if (ball.dirX < 0)
             {
-                ball.CheckRacketCollision(P1);
+                // ball.CheckRacketCollision(P1);
+                if (ball.posY >= P1.posY && ball.posY + ballSize <= P1.posY + racketHeight &&
+                    ball.posX <= P1.posX + racketWidht)
+                {
+                    ball.dirX = -ball.dirX;
+                }
+                else if (ball.posX <= 0)
+                {
+                    scoreP2++;
+                    ball.gameRun = false;
+                    ball.ResetBall();
+                }
             }
 
             base.Update(gameTime);
@@ -83,7 +110,10 @@ namespace pong
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(new Color(51, 51, 51));
-
+            spriteBatch.Begin();
+            spriteBatch.DrawString(font, scoreP1.ToString(), new Vector2(50, 50), new Color(45, 45, 45, 20));
+            spriteBatch.DrawString(font, scoreP2.ToString(), new Vector2(GraphicsDevice.Viewport.Width -250, 50), new Color(45, 45, 45, 20));
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

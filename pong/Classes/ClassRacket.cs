@@ -20,7 +20,7 @@ namespace pong.Classes
         int width;
         int height;
         public int posY { get; set; }
-        int posX;
+        public int posX { get; set; }
 
         public ClassRacket(GraphicsDevice graphics, SpriteBatch spriteBatch, Game game, int width, int height, int posX,
             int posY) :
