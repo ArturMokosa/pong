@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using pong.Classes;
@@ -70,8 +71,10 @@ namespace pong
                 ball.ResetBall();
             }
 
+            
             P1.posY = Mouse.GetState().Y;
-            P2.posY = Mouse.GetState().Y;
+            P2.posY = ball.posY / 1.4 + 25;
+            
 
             if (ball.dirX > 0)
             {

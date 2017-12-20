@@ -19,7 +19,7 @@ namespace pong.Classes
 
         int ballSize;
 
-        public int speed { get; set; } = 1;
+        public int speed { get; set; }
         public bool gameRun { get; set; }
         public int dirX { get; set; }
         public int dirY { get; set; }
@@ -36,6 +36,7 @@ namespace pong.Classes
             pixel.SetData(new Color[] {Color.White});
 
             rnd = new Random();
+            speed = 2;
         }
 
         public void ResetDirection()

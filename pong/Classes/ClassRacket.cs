@@ -19,7 +19,7 @@ namespace pong.Classes
 
         int width;
         int height;
-        public int posY { get; set; }
+        public double posY { get; set; }
         public int posX { get; set; }
 
         public ClassRacket(GraphicsDevice graphics, SpriteBatch spriteBatch, Game game, int width, int height, int posX,
@@ -48,7 +48,7 @@ namespace pong.Classes
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.Draw(pixel, new Rectangle(posX, posY, width, height), Color.White);
+            spriteBatch.Draw(pixel, new Rectangle(posX, (int)posY, width, height), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
